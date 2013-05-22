@@ -1,0 +1,18 @@
+\pagestyle{empty}
+\begingroup % Create the command for including the title page in the document
+\hbox{ % Horizontal box
+\hspace*{0.2\textwidth} % Whitespace to the left of the title page
+\rule{1pt}{\textheight} % Vertical line
+\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+
+{\noindent{\ttfamily\Huge\bfseries Harmony} \\  [0.5\baselineskip] {\large\scshape User Manual}}\\[2\baselineskip] % Title
+\includegraphics[width=1in]{resources/figures/harmony_logo}\\[2\baselineskip]
+
+{\large LaBRI Software Engineering Group \\\url{http://se.labri.fr/}}\\[4\baselineskip] % Tagline or further description
+
+
+\vspace{0.3\textheight} % Whitespace between the title block and the publisher
+{\noindent Version 0.9 }\\[\baselineskip] % Publisher and logo
+}}
+\endgroup

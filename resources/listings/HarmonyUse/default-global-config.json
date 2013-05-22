@@ -5,9 +5,9 @@
 		"password":"",
 		"driver":"org.h2.Driver"
 	},
-	"manage-create-sources":{
+	"execution":{
 		"threads":1,
-		"timeout":100000
+		"timeout":120
 	},
 	"source-analyses":[
 		{
