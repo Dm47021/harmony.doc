@@ -1,6 +1,7 @@
 \documentclass[a4paper, 11pt]{report}
 
-% This document is optimize for pdflatex
+% This document is optimized for pdflatex
+
 \usepackage{bera}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -9,25 +10,8 @@
 \usepackage{graphicx}
 \usepackage{url}
 
-%\lstset{ %
-%  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
-%  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-%  breaklines=true,                 % sets automatic line breaking
-%  captionpos=b,                    % sets the caption-position to bottom
-%  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-%  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-%  frame=single,                    % adds a frame around the code
-%  keywordstyle=\color{blue},       % keyword style
-%  language=Java,                 % the language of the code
-%  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-%  stringstyle=\color{orange},
-%  commentstyle=\color{teal},
-%  showstringspaces=false,          % underline spaces within strings only
-%  showtabs=false,                  % show tabs within strings adding particular underscores
-%  tabsize=2,                      % sets default tabsize to 2 spaces
-%  columns=flexible
-%}
 \include{resources/macro/sourceFile}
+\include{resources/macro/command}
 
 \graphicspath{{resources/figures/DevelopNewAnalysesWithHarmony/}}
 
@@ -35,7 +19,8 @@
 \author{LaBRI Software Engineering Group \\\url{http://se.labri.fr/}}
 
 \begin{document} 
-\maketitle
+
+\input{resources/titlePage}
  
 \tableofcontents
 

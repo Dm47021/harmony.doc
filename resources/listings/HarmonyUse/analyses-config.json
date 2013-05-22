@@ -1,0 +1,10 @@
+"source-analyses":[
+		{
+			"class":"ReportAnalysis",
+			"require-actions":true
+		},
+		{
+			"class":"ClocAnalysis",
+			"require-actions":false
+		}
+	]
