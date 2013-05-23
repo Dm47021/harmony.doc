@@ -1,4 +1,4 @@
-\chapter{Advanced use}
+\chapter{Advanced use}\label{chap:AdvancedUse}
 
 This chapter introduces the configuration of Harmony for advanced use : selection of sources and analyses, database configuration, parallelism.
 
@@ -41,9 +41,32 @@ In this section we will look at the parameters of the JSON files used for the gl
 		\includeSourceFile{resources/listings/HarmonyUse/analyses-config.json}{Example of multiple analyses configuration}{code:analyses-config}{json}
 		
 		The construction of the complete Harmony model can be quite costly and some analyses do not require this complete model. The \emph{require-actions} parameter aims to tackle this problem by telling Harmony if it necessary to build the actions in the Harmony model (see Chapter \ref{chap:DevelopNewAnalyses} for more information).
+		
+		By default Harmony is shipped with several analyses:
+			\begin{itemize}
+				\item Reporting
+				\item ScanLib
+				\item SourceAnalyzer
+			\end{itemize}
 
 	
 	\section{Source configuration}\label{sec:advancedUse:sourceConfig}
-In this section we will look at the parameters of the JSON files used for the sources configuration. By convention the name of these files end by `source-config.json'.
+In this section we present the parameters of the JSON files used for the configuration of the sources. By convention the name of these files end by `source-config.json'.
+
+The listing \ref{code:default-source-config} shows an example of configuration file with two sources. You can add as many source as your study requires especially if you wan to exploit the parallel architecture of your computer. 
+
+\includeSourceFile{resources/listings/HarmonyUse/default-source-config.json}{Example of configuration file for the sources}{code:default-source-config}{json}
+
+For each source you must indicate an extractor that is compliant with it (\emph{class} attribute). You can develop your own but Harmony already provides a fair number of source extractor :
+		\begin{itemize}
+			\item \emph{JGitSourceExtractor} for Git repositories. This extractor is based on JGit, a Java implementation of Git.
+			\item \emph{GitSourceExtractor} for Git repositories. The Git native client must be installed on your machine to use this extractor.
+			\item \emph{SVNKitSourceExtractor} for SVN repositories.
+			\item \emph{Hg4jSourceExtractor} for Mercurial repositories.
+			\item \emph{BugzillaSourceExtractor} for Bugzilla repositories.
+			\item \emph{TFSSourceExtractor} for Team Foundation repositories.
+		\end{itemize}
+
+
 	
 	
