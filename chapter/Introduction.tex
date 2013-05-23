@@ -1,0 +1,14 @@
+\chapter{Introduction}\label{chap:Introduction}
+
+Harmony is a framework that helps you to design and run analysis done on source code or bug repositories. Examples of such analysis are (1) the computation of source code metrics with the intent to perform a correlation with bugs distribution, (2) the measurement of software developers practices to infer their impact on software development, or (3) the computation of statistics to better understand a set of software projects.
+
+Harmony offers the following facilities that are mandatory to perform any analysis:
+\begin{itemize}
+\item It defines an abstraction layer to design your analysis. This abstraction layer defines few simple concepts  used by any analysis (Source, Event, Item, Action and Authors).
+\item It manages interoperability by providing connectors to many well-known repositories (Git, Mercurial, SVN, BugZilla, etc.).
+\item It handles parallelism that can be done when running your analysis. Such a parallelism allows a better efficiency specially when the analysis has to be ran on a large set of software projects.
+\item It supports the scheduling of several analyses with the objective to design analysis by composition.
+\item It provides a persistence facility to store the results of analysis into data bases.
+\end{itemize}
+
+This document explains how to install, run, configure Harmony and how to design your own analysis.
