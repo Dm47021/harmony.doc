@@ -1,6 +1,10 @@
 [
 	{
-		"url":"https://github.com/jrfaller/test-git.git",
+		"url":"https://github.com/isylhdin/PED_MaisonHote.git",
+		"class":"JGitSourceExtractor"
+	},
+	{
+		"url":"https://github.com/twitter/bootstrap.git",
 		"class":"JGitSourceExtractor"
 	}
 ]
