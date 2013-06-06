@@ -6,5 +6,11 @@
 	{
 		"url":"https://github.com/twitter/bootstrap.git",
 		"class":"JGitSourceExtractor"
+	},
+	{
+		"url":"http://macchiato.fr/svn/",
+		"class":"SvnKitSourceExtractor",
+		"user":"myself",
+		"password":"123456789"
 	}
 ]
