@@ -1,77 +1,72 @@
-\chapter{Develop new analyses with Harmony}\label{chap:DevelopNewAnalyses}
+\chapter{Develop your own analysis}\label{chap:DevelopNewAnalyses}
 
-This chapter explains step-by-step how to set up a development environment for Harmony. We will also show how it is possible to develop and run your own Harmony analyses. The Harmony framework is based on the OSGi component model. Even though you may use any OSGi implementation for developing and running your analyses, this documentation shows how to do it with the Equinox implementation developed by the Eclipse community.
-
-
-\section{Install the Harmony plug-in}
-Firsts things first, you need to install Eclipse from \url{http://www.eclipse.org/downloads/}. We recommend Eclipse Classic as it is packaged with the Plug-in Development Environment.
-
-Once Eclipse has been downloaded and unzipped, run it.  Now go to the menu \texttt{Help $\rightarrow$ Install new software}. At the right of the "work with" field, click on the \emph{Add...} button. On the popup type for \emph{Name}: Harmony and for \emph{Location}: \url{http://se.labri.fr/data/harmony/update-site} and click on \emph{Ok}. At the right of the "work with" field, select in the list the Harmony update site that you have just created. Finally select the \texttt{Harmony} category, and install the selected plug-ins as shown in the figure \ref{fig:harmonyInstall}. 
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.9\linewidth]{install-harmony}
-		\caption{Harmony installation within the Eclipse IDE}
-		\label{fig:harmonyInstall}
-	\end{figure}
-
-Restart Eclipse. The Harmony plug-ins are now loaded in your Eclipse installation.
-
-\section{Run Harmony within Eclipse}\label{sec:RunInEclipse}
-
-Eclipse uses \emph{Run configurations} in order to know what should be launched and how : which plugins, which execution environment,... A default \emph{Run configuration} is provided in the \texttt{harmony.core} plug-in. In order to use it you have to import the \texttt{harmony.core} plug-in from your Eclipse installation into your workspace. 
-
-You can do this via the \texttt{File $\rightarrow$ Import} menu. Then select \texttt{Plug-ins and Fragments} (see figure \ref{fig:coreBundleImportMenu}). 
-
-In the \texttt{Import Plug-ins and Fragments} wizard, select \texttt{Import As $\rightarrow$ Project with source folders} as shown in figure \ref{fig:coreBundleImportMenu}.
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.49\linewidth]{import-menu}
-		\includegraphics[width=.49\linewidth]{import-plugin-menu}
-		\caption{Menu for the importation of plugins in the workspace}
-		\label{fig:coreBundleImportMenu}
-	\end{figure}
-
-In the next step, add the \emph{fr.labri.harmony.core} plug-in in the list of \emph{Plug-ins and Fragments to Import}. You may use the filter box with "fr.labri" in order to find more rapidly the \emph{fr.labri.harmony.core} plug-in as demonstrated in figure \ref{fig:coreBundleImportSelection}.
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.8\linewidth]{import-plugin-selection}
-		\caption{Selection of the Harmony core plugin for importation}
-		\label{fig:coreBundleImportSelection}
-	\end{figure}
-
-Finally press \texttt{Finish}. A new project has been added to your workspace. You may have build errors, in such a case you need to clean the project via the \texttt{Project $\rightarrow$ Clean} menu.
-
-We will be able to run Harmony in a few steps. The next thing to do is to copy the \texttt{configuration} directory --located in the \texttt{resources} directory from the \texttt{fr.labri.harmony.core} plugin-- into the root of workspace, where you should have a \texttt{.metadata} directory and the plug-in you imported:\\
-
-\begin{lstlisting}[language=bash]
-drwx------+ 1 XXXXXX None 0 21 mai   11:27 .metadata/
-drwx------+ 1 XXXXXX None 0 21 mai   14:09 configuration/
-drwx------+ 1 XXXXXX None 0 21 mai   13:08 fr.labri.harmony.core/
-\end{lstlisting}
+This chapter explains step-by-step how to develop and run your own Harmony analyses.
 
 
-Then go back into Eclipse, and open the \texttt{Run Configurations} window (via the \texttt{Run} menu). In the left menu, you should see an \texttt{HarmonyEquinox} configuration under the \texttt{OSGi Framework} node as shown in figure \ref{fig:run-configurations}. Select it.
 
-You can now see a list of plugins. The ones that are selected are the ones that will be loaded if you launch this \emph{Run configuration}. Now, uncheck the "Show only Selected" checkbox (on the right) and type "fr.labri" in the filter box located at the top of the plugins list. Add the harmony plugins that are not imported in your workspace (i.e. reporting, cloc, and source.git) as shown in figure \ref{fig:run-configurations}. Remember that if you develop new analyses, you must update your \emph{Run configuration} by adding the new plugin otherwise you will not be able to run your analysis.
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.85\linewidth]{run-configurations}
-		\caption{Set up of the run configuration}
-		\label{fig:run-configurations}
-	\end{figure}
-
-Finally you can hit \texttt{Run} to launch the selected plugins. Once the OSGi console is loaded, type \texttt{harmony} (see figure \ref{fig:run-harmony}.
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.95\linewidth]{run-harmony}
-		\caption{OSGi console with Harmony running}
-		\label{fig:run-harmony}
-	\end{figure}
+%\section{Run Harmony}\label{sec:RunInEclipse}
+%
+%	\begin{itemize}
+%		\item Go to \texttt{File $\rightarrow$ Import}
+%		\item Select \texttt{Launch Configurations} under the \texttt{Run/Debug} category and click on \texttt{Next}
+%		\item Click on \texttt{Browse} to select the \emph{configuration} directory located in the \emph{HarmonyWorkingDirectory}
+%		\item Select the file \emph{Harmony.launch} as shown in figure \ref{} and click on \texttt{Finish}
+%		
+%	\end{itemize}
+%
+%Eclipse uses \emph{Run configurations} in order to know what should be launched and how : which plugins, which execution environment,... A default \emph{Run configuration} is provided in the \texttt{harmony.core} plug-in. In order to use it you have to import the \texttt{harmony.core} plug-in from your Eclipse installation into your workspace. 
+%
+%You can do this via the \texttt{File $\rightarrow$ Import} menu. Then select \texttt{Plug-ins and Fragments} (see figure \ref{fig:coreBundleImportMenu}). 
+%
+%In the \texttt{Import Plug-ins and Fragments} wizard, select \texttt{Import As $\rightarrow$ Project with source folders} as shown in figure \ref{fig:coreBundleImportMenu}.
+%
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=.49\linewidth]{import-menu}
+%		\includegraphics[width=.49\linewidth]{import-plugin-menu}
+%		\caption{Menu for the importation of plugins in the workspace}
+%		\label{fig:coreBundleImportMenu}
+%	\end{figure}
+%
+%In the next step, add the \emph{fr.labri.harmony.core} plug-in in the list of \emph{Plug-ins and Fragments to Import}. You may use the filter box with "fr.labri" in order to find more rapidly the \emph{fr.labri.harmony.core} plug-in as demonstrated in figure \ref{fig:coreBundleImportSelection}.
+%
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=.8\linewidth]{import-plugin-selection}
+%		\caption{Selection of the Harmony core plugin for importation}
+%		\label{fig:coreBundleImportSelection}
+%	\end{figure}
+%
+%Finally press \texttt{Finish}. A new project has been added to your workspace. You may have build errors, in such a case you need to clean the project via the \texttt{Project $\rightarrow$ Clean} menu.
+%
+%We will be able to run Harmony in a few steps. The next thing to do is to copy the \texttt{configuration} directory --located in the \texttt{resources} directory from the \texttt{fr.labri.harmony.core} plugin-- into the root of workspace, where you should have a \texttt{.metadata} directory and the plug-in you imported:\\
+%
+%\begin{lstlisting}[language=bash]
+%drwx------+ 1 XXXXXX None 0 21 mai   11:27 .metadata/
+%drwx------+ 1 XXXXXX None 0 21 mai   14:09 configuration/
+%drwx------+ 1 XXXXXX None 0 21 mai   13:08 fr.labri.harmony.core/
+%\end{lstlisting}
+%
+%
+%Then go back into Eclipse, and open the \texttt{Run Configurations} window (via the \texttt{Run} menu). In the left menu, you should see an \texttt{HarmonyEquinox} configuration under the \texttt{OSGi Framework} node as shown in figure \ref{fig:run-configurations}. Select it.
+%
+%You can now see a list of plugins. The ones that are selected are the ones that will be loaded if you launch this \emph{Run configuration}. Now, uncheck the "Show only Selected" checkbox (on the right) and type "fr.labri" in the filter box located at the top of the plugins list. Add the harmony plugins that are not imported in your workspace (i.e. reporting, cloc, and source.git) as shown in figure \ref{fig:run-configurations}. Remember that if you develop new analyses, you must update your \emph{Run configuration} by adding the new plugin otherwise you will not be able to run your analysis.
+%
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=.85\linewidth]{run-configurations}
+%		\caption{Set up of the run configuration}
+%		\label{fig:run-configurations}
+%	\end{figure}
+%
+%Finally you can hit \texttt{Run} to launch the selected plugins. Once the OSGi console is loaded, type \texttt{harmony} (see figure \ref{fig:run-harmony}.
+%
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=.95\linewidth]{run-harmony}
+%		\caption{OSGi console with Harmony running}
+%		\label{fig:run-harmony}
+%	\end{figure}
 
 
 \section{Create a new analysis}
@@ -155,7 +150,7 @@ You now have to add your analysis main class that will implement the \emph{Abstr
 This is very important, as \textbf{both constructors from AbstractAnalysis are mandatory}. Also add as your superclass: \\ \emph{fr.labri.harmony.core.analysis.AbstractAnalysis}\\
 Press \emph{Finish}. You should have something looking like the class presented in the listing \ref{code:dummyAnalysis}. The method \emph{runOn(Source src)} is where you must implement your analysis. Take a look at existing analyses for inspiration. Follow the same procedure as the one you have followed for importing the \emph{fr.labri.harmony.core} (see section \ref{sec:RunInEclipse}).
 
-\includeSourceFile{resources/listings/DevelopNewAnalysesWithHarmony/DummyAnalysis.java}{DummyAnalysis lass}{code:dummyAnalysis}{java}
+\includeSourceFile{resources/listings/DummyAnalysis.java}{DummyAnalysis lass}{code:dummyAnalysis}{java}
 
 You now have a class that implements the analysis service so you need to inform the OSGi runtime about your implementation. Create an empty folder called \emph{OSGI-INF} at the root of your project. Then create a new component definition : make a right-click on your plug-in project and select \texttt{New $\rightarrow$ Component Definition}. Complete the form by taking example of the figure \ref{fig:new-component}, for example the component definition should be in the newly created  \emph{OSGI-INF} folder. Finally press \emph{Finish}.
 
@@ -177,8 +172,22 @@ Open the newly created file and go the \emph{Service} tab as shown in the figure
 	
 Your analysis project is now set up. You can run it by modifying your configuration files (see Chapter \ref{chap:AdvancedUse}) and your \emph{Run Configuration} (see Section \ref{sec:RunInEclipse}).
 
-
-
+%
+%\section{How to write an analysis}
+%
+%	\subsection{The Harmony model}
+%	
+%		\begin{figure}[H]
+%			\centering
+%			\includegraphics[width=\linewidth]{data-model}
+%			\caption{Class diagram of the main concepts of the Harmony generic data model}
+%			\label{fig:data-model}
+%		\end{figure}
+%	
+%	\subsection{Using the database}
+%	
+%	\subsection{Output management}
+	
 % TODO explain the use of the dao
 %\includegraphics[width=6in]{dummy-execution}
 %

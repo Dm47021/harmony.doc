@@ -1,4 +1,4 @@
-\chapter{Advanced use}\label{chap:AdvancedUse}
+\chapter{Configuration}\label{chap:configuration}
 
 This chapter introduces the configuration of Harmony for advanced use : selection of sources and analyses, database configuration, parallelism.
 
@@ -22,23 +22,25 @@ They are named \emph{default-global-config.json} and \emph{default-source-config
 	\section{Global configuration}\label{sec:advancedUse:globalConfig}
 In this section we will look at the parameters of the JSON files used for the global configuration. By convention the name of these files end by `global-config.json'. The listing \ref{code:default-global-config} shows the default file for the global configuration.
 
-\includeSourceFile{resources/listings/HarmonyUse/default-global-config.json}{Default JSON file for the global configuration}{code:default-global-config}{json}
+\includeSourceFile{resources/listings/default-global-config.json}{Default JSON file for the global configuration}{code:default-global-config}{json}
 
 
 		\subsection{Database}
 		As shown in the listing \ref{code:default-global-config}, Harmony uses by default the H2 database engine (\url{http://www.h2database.com/}) in its embedded form. Even though this configuration is sufficient for testing we recommend to use a database server for running large studies with Harmony. In addition to H2, Harmony can use a MySQL server, the Community Server Edition for example: \url{http://dev.mysql.com/downloads/mysql/}. Once the MySQL server is installed and running, you will need to modify your global config file to set up the connection with the server. The listing \ref{code:mysql-config} presents an example of such configuration.
 		
-\includeSourceFile{resources/listings/HarmonyUse/mysql-config.json}{Example of database configuration for a MySQL server}{code:mysql-config}{json}		
+\includeSourceFile{resources/listings/mysql-config.json}{Example of database configuration for a MySQL server}{code:mysql-config}{json}
+
+The \emph{clean-database} parameter indicates if you want to delete all the existing Harmony model stored in the database before launching the analyses. If not explicitly specified, the \emph{clean-database} is set at true.
 		
 		\subsection{Parallelism}
 		Harmony uses Java threads for launching the analyses. Thus it can exploit shared memory architectures such as multicore architectures. You just have to modify the number of threads you want to use (see listing \ref{code:exe-config}) in the execution section. Only one thread is used by source in order to minimize concurrent access to the same resources. Hence you will need multiple source to benefit from parallelism. The \emph{timeout} parameter indicates in minutes the maximum execution time allocated to a thread for executing all the analyses asked on its associated source. 
 		
-\includeSourceFile{resources/listings/HarmonyUse/exe-config.json}{Example of parallel execution configuration}{code:exe-config}{json}
+\includeSourceFile{resources/listings/exe-config.json}{Example of parallel execution configuration}{code:exe-config}{json}
 
 		\subsection{Analyses}
 		Several analyses can be executed on the same source, these analyses can even be chained and share data. This aspect will be further discussed in chapter \ref{chap:DevelopNewAnalyses}. Harmony possesses its own scheduler so you just have do declare the list of analyses as described in listing \ref{code:analyses-config} and Harmony will take care of executing them in a correct order.
 		
-		\includeSourceFile{resources/listings/HarmonyUse/analyses-config.json}{Example of multiple analyses configuration}{code:analyses-config}{json}
+		\includeSourceFile{resources/listings/analyses-config.json}{Example of multiple analyses configuration}{code:analyses-config}{json}
 		
 		The construction of the complete Harmony model can be quite costly and some analyses do not require this complete model. The \emph{require-actions} parameter aims to tackle this problem by telling Harmony if it necessary to build the actions in the Harmony model (see Chapter \ref{chap:DevelopNewAnalyses} for more information).
 		
@@ -55,7 +57,7 @@ In this section we present the parameters of the JSON files used for the configu
 
 The listing \ref{code:default-source-config} shows an example of configuration file with three sources. You can add as many source as your study requires especially if you wan to exploit the parallel architecture of your computer. 
 
-\includeSourceFile{resources/listings/HarmonyUse/default-source-config.json}{Example of configuration file for the sources}{code:default-source-config}{json}
+\includeSourceFile{resources/listings/default-source-config.json}{Example of configuration file for the sources}{code:default-source-config}{json}
 
 For each source specified using the \emph{url} attribute you must indicate an extractor that is compliant with it (\emph{class} attribute). You can develop your own but Harmony already provides a fair number of source extractor :
 		\begin{itemize}
