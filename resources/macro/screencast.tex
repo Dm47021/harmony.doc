@@ -1,0 +1,17 @@
+
+\definecolor{grisbg}{gray}{0.95}
+
+\newcommand{\screecast}[1]{
+\begin{center}
+ \colorbox{grisbg}{
+        \begin{minipage}[t]{0.10\textwidth}
+        \vspace{0cm}
+         	\includegraphics[scale=1]{screecast-icon} 
+         \end{minipage}
+         \begin{minipage}[t]{0.85\textwidth}
+         \vspace{0cm}
+         	  {\textsc{Screencast available for this procedure}:} \\
+         	  \url{#1}
+         \end{minipage}
+      }
+\end{center}}
